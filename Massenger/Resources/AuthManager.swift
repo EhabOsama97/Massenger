@@ -6,6 +6,7 @@
 //
 
 import FirebaseAuth
+import FBSDKLoginKit
 
 public class AuthManager {
     
@@ -44,6 +45,15 @@ public class AuthManager {
             }
         }
 
+    }
+    
+    public func logOut() {
+        do {
+            try Auth.auth().signOut()
+        }
+        catch {
+            print("Error on log out")
+        }
     }
     
 }

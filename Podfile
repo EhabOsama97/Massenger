@@ -12,4 +12,15 @@ target 'Massenger' do
   pod 'Firebase/Storage'
   pod 'Firebase/Firestore'
 
+#facebook
+
+pod 'FBSDKLoginKit', '6.0.0'
+
+pod 'MessageKit'
+pod 'JGProgressHUD'
+pod 'RealmSwift'
+
+
+
+
 end

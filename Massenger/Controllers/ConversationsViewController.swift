@@ -35,6 +35,7 @@ class ConversationsViewController: UIViewController {
         if Auth.auth().currentUser == nil {
             //Show Sign in
             print("Dkhal fl iffff")
+            
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let LoginVC = storyBoard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
             

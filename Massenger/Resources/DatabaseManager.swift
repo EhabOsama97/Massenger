@@ -21,7 +21,7 @@ final class DatabaseManager {
 extension DatabaseManager {
     
     public func validateNewUser (email:String , completion : @escaping ((Bool)-> Void)) {
-        database.child(email).observeSingleEvent(of: .value, with: {snapshot in
+        database.child(email.SafeDB()).observeSingleEvent(of: .value, with: {snapshot in
             guard let foundEmail = snapshot.value as? String else {
                 completion(false)
                 return
@@ -31,7 +31,7 @@ extension DatabaseManager {
     }
     
     public func insertUser (user:ChatAppUser) {
-        database.child(user.email).setValue([
+        database.child(user.email.SafeDB()).setValue([
             "firstName" : user.firstName,
             "lastName" : user.lastName
         ])
@@ -47,4 +47,11 @@ struct ChatAppUser {
     //let profilePictureUrl:String
 }
 
+extension String {
+    func SafeDB () -> String{
+        var s:String
+        s = self.replacingOccurrences(of: ".", with: "-").replacingOccurrences(of: "@", with: "-")
+        return s
+    }
+}
 
